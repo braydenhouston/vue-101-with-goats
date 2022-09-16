@@ -7,6 +7,7 @@ const randomGoatNames = [
 const app = Vue.createApp({
     data() {
         return {
+            showGoatEditor: false,
             goats: [
                 {
                     name: "Gruff",
