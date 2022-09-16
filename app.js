@@ -7,7 +7,7 @@ const randomGoatNames = [
 const app = Vue.createApp({
     data() {
         return {
-            showGoatEditor: false,
+            currentGoatIndex: null,
             goats: [
                 {
                     name: "Gruff",
@@ -53,16 +53,23 @@ const app = Vue.createApp({
                 powerLevel: Math.floor(Math.random() * 10000)
             }
         },
-        addGoats(count){
-            const newGoats = []
-            for (let i = 0; i < count; i++){
-                newGoats.push(this.createGoat())
+        upsertGoat(goat){
+            const goats = this.goats.slice()
+            if ( this.currentGoatIndex === -1){
+                goats.push(goat)
             }
-            this.goats = this.goats.concat(newGoats)
+            else {
+                goats[this.currentGoatIndex] = goat
+            }
+            this.goats = goats
+            this.currentGoatIndex = null
         },
         workoutGoat(goatIndex){
             const goat = this.goats[goatIndex]
             goat.powerLevel += 10
+        },
+        editGoat(goatIndex){
+            this.currentGoatIndex = goatIndex
         }
     }
 })

@@ -19,6 +19,7 @@
                     :is-grumpy="item.isGrumpy"
                     :power-level="item.powerLevel"
                     @workout="workoutGoat(index)"
+                    @edit="editGoat(index)"
                 ></goat>
             </li>
         </ul>
@@ -28,12 +29,14 @@
         <div>
             <button
                 class="itsabustton"
-                @click="showGoatEditor = !showGoatEditor"
-            >Toggle Goat Edit</button>
+                @click="editGoat(-1)"
+            >Add New Goat</button>
         </div>
         <goat-editor
-            v-if="showGoatEditor"
-            @goat="goats.push($event)"
+            v-if="currentGoatIndex !== null"
+            :key="currentGoatIndex"
+            :inital-goat="goats[currentGoatIndex]"
+            @goat="upsertGoat"
         ></goat-editor>
     </div>
 

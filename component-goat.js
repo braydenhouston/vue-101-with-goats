@@ -9,6 +9,9 @@ app.component("goat", {
             <button
                 @click="$emit('workout')"
             >Send to Gym</button>
+            <button
+                @click="$emit('edit')"
+            >Edit Goat</button>
         </div>
     `,
     props: {
