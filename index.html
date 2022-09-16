@@ -12,11 +12,13 @@
         <h1>We have {{ goatCount }} goats!</h1>
         <ul>
             <li
-                v-for="goat in goats"
+                v-for="item in goats"
             >
-                <span>name: {{goat.name}}:</span>
-                <span>is grump: {{goat.isGrumpy}}:</span>
-                <span>power level: {{goat.powerLevel}}:</span>
+                <goat
+                    :name="item.name"
+                    :is-grumpy="item.isGrumpy"
+                    :power-level="item.powerLevel"
+                ></goat>
             </li>
         </ul>
         <p>
@@ -35,6 +37,8 @@
     </div>
 
     <script src="https://unpkg.com/vue@3.2.39/dist/vue.global.js"></script>
+    <script src="./app.js"></script>
+    <script src="./component-goat.js"></script>
     <script src="./index.js"></script>
 </body>
 </html>
