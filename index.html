@@ -10,6 +10,15 @@
 
     <div id="app">
         <h1>We have {{ goatCount }} goats!</h1>
+        <div>
+            <label>
+                <span>Goat Count</span>
+                <input 
+                    type="number"
+                    v-model="goatCount"
+                />
+            </label>
+        </div>
         <p>
             We need {{ dailyFoodRequirments }} databases to feed the goats!
         </p>
