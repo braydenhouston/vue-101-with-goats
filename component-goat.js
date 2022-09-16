@@ -6,6 +6,9 @@ app.component("goat", {
             <span>name: {{name}}:</span>
             <span>is grump: {{isGrumpy}}:</span>
             <span>power level: {{powerLevel || "unknown"}}:</span>
+            <button
+                @click="$emit('workout')"
+            >Send to Gym</button>
         </div>
     `,
     props: {

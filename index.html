@@ -12,12 +12,13 @@
         <h1>We have {{ goatCount }} goats!</h1>
         <ul>
             <li
-                v-for="item in goats"
+                v-for="(item, index) in goats"
             >
                 <goat
                     :name="item.name"
                     :is-grumpy="item.isGrumpy"
                     :power-level="item.powerLevel"
+                    @workout="workoutGoat(index)"
                 ></goat>
             </li>
         </ul>

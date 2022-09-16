@@ -58,6 +58,10 @@ const app = Vue.createApp({
                 newGoats.push(this.createGoat())
             }
             this.goats = this.goats.concat(newGoats)
+        },
+        workoutGoat(goatIndex){
+            const goat = this.goats[goatIndex]
+            goat.powerLevel += 10
         }
     }
 })
