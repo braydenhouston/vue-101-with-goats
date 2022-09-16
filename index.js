@@ -10,11 +10,8 @@ const app = Vue.createApp({
         }
     },
     methods: {
-        addGoat(){
-            this.goatCount += 1
-        },
-        addFiveGoats(){
-            this.goatCount += 5
+        addGoats(count){
+            this.goatCount += count
         }
     }
 })
