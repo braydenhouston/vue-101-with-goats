@@ -1,3 +1,9 @@
+const randomGoatNames = [
+    "Billy",
+    "Goku",
+    "Joe"
+]
+
 const app = Vue.createApp({
     data() {
         return {
@@ -39,8 +45,19 @@ const app = Vue.createApp({
         }
     },
     methods: {
+        createGoat(){
+            return {
+                name: randomGoatNames[Math.floor(randomGoatNames.length * Math.random())],
+                isGrumpy: Math.random() > 0.5,
+                powerLevel: Math.floor(Math.random() * 10000)
+            }
+        },
         addGoats(count){
-            this.goatCount += count
+            const newGoats = []
+            for (let i = 0; i < count; i++){
+                newGoats.push(this.createGoat())
+            }
+            this.goats = this.goats.concat(newGoats)
         }
     }
 })
