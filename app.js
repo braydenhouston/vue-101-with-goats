@@ -46,12 +46,14 @@ const app = Vue.createApp({
         }
     },
     methods: {
-        createGoat(){
-            return {
+        createRandomGoat(){
+                const goat = {
                 name: randomGoatNames[Math.floor(randomGoatNames.length * Math.random())],
                 isGrumpy: Math.random() > 0.5,
                 powerLevel: Math.floor(Math.random() * 10000)
             }
+            this.currentGoatIndex = -1
+            this.upsertGoat(goat)
         },
         upsertGoat(goat){
             const goats = this.goats.slice()

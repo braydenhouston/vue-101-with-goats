@@ -32,6 +32,12 @@
                 @click="editGoat(-1)"
             >Add New Goat</button>
         </div>
+        <div>
+            <button
+                class="itsabustton"
+                @click="createRandomGoat"
+            >Add Random Goat</button>
+        </div>
         <goat-editor
             v-if="currentGoatIndex !== null"
             :key="currentGoatIndex"
