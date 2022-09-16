@@ -4,6 +4,11 @@ const app = Vue.createApp({
             goatCount: 5
         }
     },
+    computed: {
+        dailyFoodRequirments() {
+            return this.goatCount * 5
+        }
+    },
     methods: {
         addGoat(){
             this.goatCount += 1
