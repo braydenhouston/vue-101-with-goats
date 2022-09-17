@@ -4,15 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <title>Goat List</title>
 </head>
 <body>
+    <div id="app" class="container p-5">
+        <p class="title">
+            <i class="fa-duotone fa-ram"></i> We have {{ goatCount }} goats!
+        </p>
+        <p>
+            We need {{ dailyFoodRequirments }} databases to feed the goats!
+        </p>
 
-    <div id="app">
-        <h1>We have {{ goatCount }} goats!</h1>
-        <ul>
-            <li
+        <div class="field is-grouped">
+            <p class="control">
+                <button
+                class="button is-primary"
+                @click="editGoat(-1)"
+            >Add New Goat</button>
+            </p>
+            <p class="control">
+                <button
+                class="button"
+                @click="createRandomGoat"
+            >Add Random Goat</button>
+            </p>
+          </div>
+
+        <goat-editor
+            v-if="currentGoatIndex !== null"
+            :key="currentGoatIndex"
+            :inital-goat="goats[currentGoatIndex]"
+            @goat="upsertGoat"
+        ></goat-editor>
+
+
+            <div
                 v-for="(item, index) in goats"
+                :key="currentGoatIndex"
             >
                 <goat
                     :name="item.name"
@@ -20,30 +49,9 @@
                     :power-level="item.powerLevel"
                     @workout="workoutGoat(index)"
                     @edit="editGoat(index)"
+                    @delete="deleteGoat(index)"
                 ></goat>
-            </li>
-        </ul>
-        <p>
-            We need {{ dailyFoodRequirments }} databases to feed the goats!
-        </p>
-        <div>
-            <button
-                class="itsabustton"
-                @click="editGoat(-1)"
-            >Add New Goat</button>
-        </div>
-        <div>
-            <button
-                class="itsabustton"
-                @click="createRandomGoat"
-            >Add Random Goat</button>
-        </div>
-        <goat-editor
-            v-if="currentGoatIndex !== null"
-            :key="currentGoatIndex"
-            :inital-goat="goats[currentGoatIndex]"
-            @goat="upsertGoat"
-        ></goat-editor>
+            </div>
     </div>
 
     <script src="https://unpkg.com/vue@3.2.39/dist/vue.global.js"></script>
@@ -51,5 +59,6 @@
     <script src="./component-goat.js"></script>
     <script src="./component-goat-editor.js"></script>
     <script src="./index.js"></script>
+    <script src="https://kit.fontawesome.com/ad5bd074f5.js" crossorigin="anonymous"></script>
 </body>
 </html>

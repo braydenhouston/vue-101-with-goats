@@ -3,15 +3,54 @@ app.component("goat", {
         <div 
             class="goat"
         >
-            <span>name: {{name}}:</span>
-            <span>is grump: {{isGrumpy}}:</span>
-            <span>power level: {{powerLevel || "unknown"}}:</span>
-            <button
-                @click="$emit('workout')"
-            >Send to Gym</button>
-            <button
-                @click="$emit('edit')"
-            >Edit Goat</button>
+            <div
+                class="card mb-3"
+            >
+                <header class="card-header">
+                    <p class="card-header-title">
+                        {{name}} 
+                    </p>
+                    <div class="card-header-icon">
+                        <span class="icon">
+                            <i class="fas fa-duotone fa-ram" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                     
+                </header>
+                <div class="card-content">
+                        <div class="content">
+                            Mood: <i 
+                            class="fa-regular" 
+                            :class="goatMood"
+                            ></i>
+                            <br>
+                            Power: {{powerLevel || "unknown"}}
+                        </div>
+                    </div>
+                <footer class="card-footer">
+                    <a 
+                    href="#" 
+                    class="card-footer-item"
+                    @click="$emit('workout')"
+                    >
+                        Workout
+                    </a>
+                    <a 
+                    href="#" 
+                    class="card-footer-item"
+                    @click="$emit('edit')"
+                    >
+                        Edit
+                    </a>
+                    <a 
+                    href="#" 
+                    class="card-footer-item"
+                    @click="$emit('delete')"
+                    >
+                        Delete
+                    </a>
+                </footer>
+            </div>
         </div>
     `,
     props: {
@@ -28,4 +67,13 @@ app.component("goat", {
             require: false
         }
     }
-})
+    ,
+    computed: {
+        goatMood() {
+            return {
+                'fa-face-angry': this.isGrumpy,
+                'fa-face-smile': !this.isGrumpy,
+            }
+        }
+    }
+}) 

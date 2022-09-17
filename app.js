@@ -1,7 +1,13 @@
 const randomGoatNames = [
-    "Billy",
-    "Goku",
-    "Joe"
+    "Bentlee",
+    "Philly",
+    "Patten",
+    "Adele",
+    "Bill",
+    "Petr",
+    "Bamby",
+    "Leon",
+    "Lorenzo"
 ]
 
 const app = Vue.createApp({
@@ -64,6 +70,10 @@ const app = Vue.createApp({
                 goats[this.currentGoatIndex] = goat
             }
             this.goats = goats
+            this.currentGoatIndex = null
+        },
+        deleteGoat(goatIndex){
+            const goats = this.goats.splice(goatIndex , 1)
             this.currentGoatIndex = null
         },
         workoutGoat(goatIndex){

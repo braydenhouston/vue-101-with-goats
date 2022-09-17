@@ -1,37 +1,46 @@
 app.component("goat-editor", {
     template: /* html */ `
         <form 
-            class="goat-editor"
+            class="goat-editor mb-5 p-5 has-background-white-ter"
             @submit.prevent="submit"
         >
-            <div>
-                <label>
-                    <span>Name</span>
-                    <input 
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                        <input
+                        class="input" 
                         type="text"
                         v-model.trim="value.name"
-                    />
-                </label>
+                        />
+                </div>
             </div>
-            <div>
-                <label>
-                    <span>is Grumpy</span>
-                    <input 
+
+            <div class="field">
+                <label class="label">Grumpy</label>
+                <div class="control">
+                    <label class="checkbox">
+                        <input 
                         type="checkbox"
                         v-model="value.isGrumpy"
-                    />
-                </label>
+                        />
+                        is Grumpy
+                    </label>
+                </div>
             </div>
-            <div>
-                <label>
-                    <span>Power Level</span>
+
+            <div class="field">
+                <label class="label">Power Level</label>
+                <div class="control">
                     <input 
-                        type="number"
-                        v-model.number="value.powerLevel"
+                    class="input"
+                    type="number"
+                    v-model.number="value.powerLevel"
                     />
-                </label>
+                </div>
             </div>
+
             <button
+                class="button is-success"
                 type="submit"
             >Submit</button>
         </form>
