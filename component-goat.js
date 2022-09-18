@@ -29,21 +29,18 @@ app.component("goat", {
                     </div>
                 <footer class="card-footer">
                     <a 
-                    href="#" 
                     class="card-footer-item"
                     @click="$emit('workout')"
                     >
                         Workout
                     </a>
                     <a 
-                    href="#" 
                     class="card-footer-item"
                     @click="$emit('edit')"
                     >
                         Edit
                     </a>
                     <a 
-                    href="#" 
                     class="card-footer-item"
                     @click="$emit('delete')"
                     >
