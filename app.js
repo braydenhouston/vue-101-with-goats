@@ -1,4 +1,4 @@
-const randomGoatNames = [
+let randomGoatNames = [
     "Bentlee",
     "Philly",
     "Patten",
@@ -9,6 +9,19 @@ const randomGoatNames = [
     "Leon",
     "Lorenzo"
 ]
+
+fetch("/goat-names.json")
+    .then(
+        (response) => {
+            return response.json()
+        }
+    )
+    .then(
+        (data) => {
+            randomGoatNames = data
+            console.log("Goat Names were loaded", data)
+        }
+    )
 
 const app = Vue.createApp({
     data() {
